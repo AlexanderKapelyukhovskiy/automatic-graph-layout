@@ -119,7 +119,7 @@ namespace Editing {
             toolTip.InitialDelay = 1000;
             toolTip.ReshowDelay = 500;
 
-            ToolBar.ButtonClick += ToolBar_ButtonClick;
+            //ToolStrip.ButtonClick += ToolBar_ButtonClick;
         }
 
         /// <summary>
@@ -138,12 +138,12 @@ namespace Editing {
         }
 
         /// <summary>
-        /// The ToolBar contained in the viewer.
+        /// The ToolStrip contained in the viewer.
         /// </summary>
-        internal ToolBar ToolBar {
+        internal ToolStrip ToolStrip {
             get {
                 foreach (Control c in gViewer.Controls) {
-                    var t = c as ToolBar;
+                    var t = c as ToolStrip;
                     if (t != null)
                         return t;
                 }
@@ -152,32 +152,32 @@ namespace Editing {
         }
 
         void ToolBar_ButtonClick(object sender, ToolBarButtonClickEventArgs e) {
-            foreach (NodeTypeEntry nte in m_NodeTypes)
-                if (nte.Button == e.Button) {
-                    var center = new Point();
-                    var random = new Random(1);
+            //foreach (NodeTypeEntry nte in m_NodeTypes)
+            //    if (nte.Button == e.Button) {
+            //        var center = new Point();
+            //        var random = new Random(1);
 
-                    var rect1 = gViewer.ClientRectangle; //gViewer.Graph.GeometryGraph.BoundingBox;
-                    var rect2 = gViewer.Graph.BoundingBox;
-                    Point p = gViewer.ScreenToSource(rect1.Location);
-                    Point p2 = gViewer.ScreenToSource(rect1.Location + rect1.Size);
-                    if (p.X < rect2.Left)
-                        p.X = rect2.Left;
-                    if (p2.X > rect2.Right)
-                        p2.X = rect2.Right;
-                    if (p.Y > rect2.Top)
-                        p.Y = rect2.Top;
-                    if (p2.Y < rect2.Bottom)
-                        p2.Y = rect2.Bottom;
-                    var rect = new Microsoft.Msagl.Core.Geometry.Rectangle(p, p2);
+            //        var rect1 = gViewer.ClientRectangle; //gViewer.Graph.GeometryGraph.BoundingBox;
+            //        var rect2 = gViewer.Graph.BoundingBox;
+            //        Point p = gViewer.ScreenToSource(rect1.Location);
+            //        Point p2 = gViewer.ScreenToSource(rect1.Location + rect1.Size);
+            //        if (p.X < rect2.Left)
+            //            p.X = rect2.Left;
+            //        if (p2.X > rect2.Right)
+            //            p2.X = rect2.Right;
+            //        if (p.Y > rect2.Top)
+            //            p.Y = rect2.Top;
+            //        if (p2.Y < rect2.Bottom)
+            //            p2.Y = rect2.Bottom;
+            //        var rect = new Microsoft.Msagl.Core.Geometry.Rectangle(p, p2);
 
-                    center.X = rect.Left + random.NextDouble()*rect.Width;
-                    center.Y = rect.Bottom + random.NextDouble()*rect.Height;
+            //        center.X = rect.Left + random.NextDouble()*rect.Width;
+            //        center.Y = rect.Bottom + random.NextDouble()*rect.Height;
 
-                    DrawingNode n = InsertNode(center, nte);
-                    if (NodeInsertedByUser != null)
-                        NodeInsertedByUser(n);
-                }
+            //        DrawingNode n = InsertNode(center, nte);
+            //        if (NodeInsertedByUser != null)
+            //            NodeInsertedByUser(n);
+            //    }
         }
 
         string GetNewId() {
@@ -385,11 +385,11 @@ namespace Editing {
             m_NodeTypes.Add(nte);
 
             if (nte.ButtonImage != null) {
-                ToolBar tb = ToolBar;
-                var btn = new ToolBarButton();
+                ToolStrip tb = ToolStrip;
+                var btn = new ToolStripButton();
                 tb.ImageList.Images.Add(nte.ButtonImage);
                 btn.ImageIndex = tb.ImageList.Images.Count - 1;
-                tb.Buttons.Add(btn);
+                //tb.Buttons.Add(btn);
                 nte.Button = btn;
             }
         }
@@ -415,46 +415,47 @@ namespace Editing {
         /// </summary>
         /// <param name="point">The point where the user clicked</param>
         /// <returns>The context menu to be displayed</returns>
-        protected virtual ContextMenu BuildContextMenu(Point point) {
-            var cm = new ContextMenu();
-
-            MenuItem mi;
-            if (m_NodeTypes.Count == 0) {
-                mi = new MenuItem();
-                mi.OwnerDraw = true;
-                mi.MeasureItem += mi_MeasureItem;
-                mi.DrawItem += mi_DrawItem;
-                mi.Text = "Insert node";
-                mi.Click += insertNode_Click;
-                cm.MenuItems.Add(mi);
-            } else {
-                foreach (NodeTypeEntry nte in m_NodeTypes) {
-                    mi = new MenuItem();
-                    mi.OwnerDraw = true;
-                    mi.MeasureItem += mi_MeasureItem;
-                    mi.DrawItem += mi_DrawItem;
-                    mi.Text = "Insert " + nte.Name;
-                    mi.Click += insertNode_Click;
-                    nte.MenuItem = mi;
-                    cm.MenuItems.Add(mi);
-                }
-            }
-
-            mi = new MenuItem();
-            mi.Text = "-";
-            cm.MenuItems.Add(mi);
-
-            mi = new MenuItem();
-            mi.Text = "Delete selected";
-            mi.Click += deleteSelected_Click;
-            cm.MenuItems.Add(mi);
-
-            mi = new MenuItem();
-            mi.Text = "Redo layout";
-            mi.Click += redoLayout_Click;
-            cm.MenuItems.Add(mi);
-
+        protected virtual ContextMenuStrip BuildContextMenu(Point point) {
+            var cm = new ContextMenuStrip();
             return cm;
+
+            //MenuItem mi;
+            //if (m_NodeTypes.Count == 0) {
+            //    mi = new MenuItem();
+            //    mi.OwnerDraw = true;
+            //    mi.MeasureItem += mi_MeasureItem;
+            //    mi.DrawItem += mi_DrawItem;
+            //    mi.Text = "Insert node";
+            //    mi.Click += insertNode_Click;
+            //    cm.MenuItems.Add(mi);
+            //} else {
+            //    foreach (NodeTypeEntry nte in m_NodeTypes) {
+            //        mi = new MenuItem();
+            //        mi.OwnerDraw = true;
+            //        mi.MeasureItem += mi_MeasureItem;
+            //        mi.DrawItem += mi_DrawItem;
+            //        mi.Text = "Insert " + nte.Name;
+            //        mi.Click += insertNode_Click;
+            //        nte.MenuItem = mi;
+            //        cm.MenuItems.Add(mi);
+            //    }
+            //}
+
+            //mi = new MenuItem();
+            //mi.Text = "-";
+            //cm.MenuItems.Add(mi);
+
+            //mi = new MenuItem();
+            //mi.Text = "Delete selected";
+            //mi.Click += deleteSelected_Click;
+            //cm.MenuItems.Add(mi);
+
+            //mi = new MenuItem();
+            //mi.Text = "Redo layout";
+            //mi.Click += redoLayout_Click;
+            //cm.MenuItems.Add(mi);
+
+            //return cm;
         }
 
         void mi_DrawItem(object sender, DrawItemEventArgs e) {
@@ -500,9 +501,8 @@ namespace Editing {
             if (e.RightButtonIsPressed && !e.Handled) {
                 m_MouseRightButtonDownPoint = (gViewer).ScreenToSource(e);
 
-                ContextMenu cm = BuildContextMenu(m_MouseRightButtonDownPoint);
-
-                cm.Show(this, new System.Drawing.Point(e.X, e.Y));
+                //ContextMenu cm = BuildContextMenu(m_MouseRightButtonDownPoint);
+                //cm.Show(this, new System.Drawing.Point(e.X, e.Y));
             }
         }
 
@@ -545,7 +545,7 @@ namespace Editing {
             /// <summary>
             /// If this node type has an associated button, then this will contain a reference to the button.
             /// </summary>
-            internal ToolBarButton Button;
+            internal ToolStripButton Button;
 
             /// <summary>
             /// If this is not null, then a button will be created in the toolbar, which allows the user to insert a node.

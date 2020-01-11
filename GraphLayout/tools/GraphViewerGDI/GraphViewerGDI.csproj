@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Msagl.GraphViewerGdi</RootNamespace>
-    <AssemblyName>Microsoft.Msagl.GraphViewerGdi</AssemblyName>
+    <AssemblyName>LINQPad.Microsoft.Msagl.GraphViewerGdi</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -48,7 +48,7 @@
     <DefineConstants>TRACE;DEBUG;TEST_MSAGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Microsoft.Msagl.GraphViewerGDI.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\LINQPad.Microsoft.Msagl.GraphViewerGdi.xml</DocumentationFile>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,7 +62,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Microsoft.Msagl.GraphViewerGdi.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\LINQPad.Microsoft.Msagl.GraphViewerGdi.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
@@ -79,7 +79,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRules>
     </CodeAnalysisRules>
-    <DocumentationFile>bin\Retail\Microsoft.Msagl.GraphViewerGdi.XML</DocumentationFile>
+    <DocumentationFile>bin\Retail\LINQPad.Microsoft.Msagl.GraphViewerGdi.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
@@ -93,7 +93,7 @@
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
-    <DocumentationFile>bin\Setup\Microsoft.Msagl.GraphViewerGdi.XML</DocumentationFile>
+    <DocumentationFile>bin\Setup\LINQPad.Microsoft.Msagl.GraphViewerGdi.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
